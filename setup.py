@@ -25,7 +25,7 @@ setuptools.setup(
     install_requires=['Pygments>=2'],
     entry_points={
         'pygments.lexers': [
-            'PromQLLexer = promql:PromQLLexer'
+            'PromQLLexer = pygments_promql:PromQLLexer'
         ],
     },
 )

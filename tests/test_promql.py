@@ -10,7 +10,7 @@
 import pytest
 
 from pygments.token import Token
-from promql import PromQLLexer
+from pygments_promql import PromQLLexer
 
 
 @pytest.fixture(scope="module")

@@ -43,7 +43,7 @@ The following example:
 ```python
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
-from promql import PromQLLexer
+from pygments_promql import PromQLLexer
 
 query = 'http_requests_total{handler="/api/comments"}'
 print(highlight(query, PromQLLexer(), HtmlFormatter()))
