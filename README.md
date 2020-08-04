@@ -22,12 +22,10 @@ python setup.py install
 
 # Usage
 
-Showing colorized output in a console:
+Showing colorized output in a terminal:
 
 ```console
-$ pygmentize tests/example.promql
-# Example query
-go_gc_duration_seconds{instance="localhost:9090",job="alertmanager"} + absent_over_time(scrape_duration_seconds[4m]) # A single line comment
+pygmentize tests/example.promql
 ```
 
 Or to generate a PNG file:
