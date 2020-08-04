@@ -24,6 +24,8 @@ python setup.py install
 
 # Usage
 
+## Command-line
+
 Showing colorized output in a terminal:
 
 ```console
@@ -36,6 +38,39 @@ Or to generate a PNG file:
 pygmentize -f png -O "line_numbers=False" -o tests/example.png tests/example.promql
 ```
 ![promql](tests/example.png)
+
+## Python code
+
+The following example:
+
+```python
+from pygments import highlight
+from pygments.formatters import HtmlFormatter
+from promql import PromQLLexer
+
+query = 'http_requests_total{handler="/api/comments"}'
+print(highlight(query, PromQLLexer(), HtmlFormatter()))
+```
+
+will generate this HTML output:
+
+```html
+<div class="highlight">
+    <pre>
+        <span></span>
+	<span class="nv">http_requests_total</span>
+	<span class="p">{</span>
+	<span class="nl">handler</span>
+	<span class="o">=</span>
+	<span class="s">&quot;/api/comments&quot;</span>
+	<span class="p">}</span>
+	<span class="w"></span>
+    </pre>
+</div>
+```
+
+Use `HtmlFormatter(noclasses=True)` to include CSS inline styles on every `<span>` tag.
+
 
 # Testing
 
