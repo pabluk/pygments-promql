@@ -9,7 +9,7 @@
 
 import pytest
 
-from pygments.token import Operator, Number, Text, Token
+from pygments.token import Token
 from promql import PromQLLexer
 
 
