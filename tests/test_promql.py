@@ -73,3 +73,24 @@ def test_expression_and_comment(lexer):
         (Token.Text.Whitespace, "\n"),
     ]
     assert list(lexer.get_tokens(fragment)) == tokens
+
+
+def test_function_delta(lexer):
+    fragment = u'delta(cpu_temp_celsius{host="zeus"}[2h])'
+    tokens = [
+        (Token.Keyword.Reserved, "delta"),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "cpu_temp_celsius"),
+        (Token.Punctuation, "{"),
+        (Token.Name.Label, "host"),
+        (Token.Operator, "="),
+        (Token.Literal.String, '"zeus"'),
+        (Token.Punctuation, "}"),
+        (Token.Punctuation, "["),
+        (Token.Literal.String, "2"),
+        (Token.Literal.String, "h"),
+        (Token.Punctuation, "]"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, "\n"),
+    ]
+    assert list(lexer.get_tokens(fragment)) == tokens

@@ -36,6 +36,23 @@ class PromQLLexer(RegexLexer):
     aliases = ["promql"]
     filenames = ["*.promql"]
 
+    base_keywords = (
+        words(
+            (
+                "bool",
+                "by",
+                "group_left",
+                "group_right",
+                "ignoring",
+                "offset",
+                "on",
+                "without",
+            ),
+            suffix=r"\b",
+        ),
+        Keyword,
+    )
+
     aggregator_keywords = (
         words(
             (
@@ -57,27 +74,87 @@ class PromQLLexer(RegexLexer):
         Keyword,
     )
 
+    function_keywords = (
+        words(
+            (
+                "abs",
+                "absent",
+                "absent_over_time",
+                "avg_over_time",
+                "ceil",
+                "changes",
+                "clamp_max",
+                "clamp_min",
+                "count_over_time",
+                "day_of_month",
+                "day_of_week",
+                "days_in_month",
+                "delta",
+                "deriv",
+                "exp",
+                "floor",
+                "histogram_quantile",
+                "holt_winters",
+                "hour",
+                "idelta",
+                "increase",
+                "irate",
+                "label_join",
+                "label_replace",
+                "ln",
+                "log10",
+                "log2",
+                "max_over_time",
+                "min_over_time",
+                "minute",
+                "month",
+                "predict_linear",
+                "quantile_over_time",
+                "rate",
+                "resets",
+                "round",
+                "scalar",
+                "sort",
+                "sort_desc",
+                "sqrt",
+                "stddev_over_time",
+                "stdvar_over_time",
+                "sum_over_time",
+                "time",
+                "timestamp",
+                "vector",
+                "year",
+            ),
+            suffix=r"\b",
+        ),
+        Keyword.Reserved,
+    )
+
     tokens = {
         "root": [
             (r"\n", Whitespace),
             (r"\s+", Whitespace),
             (r"//.*?\n", Comment.Single),
             # Keywords
+            base_keywords,
             aggregator_keywords,
-            # function_keywords,
+            function_keywords,
             # Numbers
             (r"-?[0-9]+\.[0-9]+", Number.Float),
             (r"-?[0-9]+", Number.Integer),
+            # Comments
+            (r"#.*?$", Comment.Single),
+            # Operators
+            (r"(\+|\-|\*|\/|\%|\^)", Operator),
+            (r"==|!=|>=|<=|<|>", Operator),
+            (r"and|or|unless", Operator.Word),
+            # Metrics
+            (r"[_a-zA-Z][_a-zA-Z0-9]+", Name.Variable),
+            # Other states
             (r"\(", Operator, "function"),
             (r"\)", Operator),
             (r"{", Punctuation, "labels"),
             (r"\[", Punctuation, "range"),
-            (r"#.*?$", Comment.Single),
-            (r"(\+|\-|\*|\/|\%|\^)", Operator),
-            (r"==|!=|>=|<=|<|>", Operator),
-            (r"and|or|unless", Operator.Word),
-            (r"(by|without|offset|on|ignoring|group_left|group_right|bool)\b", Keyword,),
-            (r"[_a-zA-Z][_a-zA-Z0-9]+", Name.Variable),
         ],
         "labels": [
             (r"}", Punctuation, "#pop"),
