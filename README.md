@@ -35,7 +35,7 @@ pygmentize tests/example.promql
 Or to generate a PNG file:
 
 ```console
-pygmentize -f png -O "line_numbers=False" -o tests/example.png tests/example.promql
+pygmentize -f png -O "line_numbers=False,style=monokai" -o example.png tests/example.promql
 ```
 ![promql](tests/example.png)
 
