@@ -1,0 +1,2 @@
+# Example query
+go_gc_duration_seconds{instance="localhost:9090",job="alertmanager"} + absent_over_time(scrape_duration_seconds[4m]) # A single line comment
