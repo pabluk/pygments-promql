@@ -49,7 +49,7 @@ query = 'http_requests_total{handler="/api/comments"}'
 print(highlight(query, PromQLLexer(), HtmlFormatter()))
 ```
 
-will generate this HTML output:
+Will generate this HTML output:
 
 ```html
 <div class="highlight">
@@ -68,6 +68,28 @@ will generate this HTML output:
 
 Use `HtmlFormatter(noclasses=True)` to include CSS inline styles on every `<span>` tag.
 
+## Sphinx
+
+In order to highlight PromQL syntax in your [Sphinx documentation site](https://www.sphinx-doc.org/en/1.8/index.html)
+you just need to add this 3 lines of Python code at the end of your site's `conf.py` file:
+
+```python
+from sphinx.highlighting import lexers
+from pygments_promql import PromQLLexer
+lexers['promql'] = PromQLLexer()
+```
+
+Then you will be able to use it like this:
+
+```rst
+Here's a PromQL example:
+
+.. code-block:: promql
+
+	# A metric with label filtering
+	go_gc_duration_seconds{instance="localhost:9090"}
+
+```
 
 # Testing
 
