@@ -1,8 +1,9 @@
 # pygments-promql
 
+![Python package](https://github.com/pabluk/pygments-promql/workflows/Python%20package/badge.svg)
+
 A PromQL lexer for [Pygments](https://pygments.org/).
 
-![Python package](https://github.com/pabluk/pygments-promql/workflows/Python%20package/badge.svg)
 
 # Installation
 
@@ -37,7 +38,7 @@ Or to generate a PNG file:
 ```console
 pygmentize -f png -O "line_numbers=False,style=monokai" -o example.png tests/example.promql
 ```
-![promql](tests/example.png)
+![PromQL syntax highlighted](https://raw.githubusercontent.com/pabluk/pygments-promql/master/tests/example.png)
 
 ## Python code
 
