@@ -34,3 +34,10 @@ Or to generate a PNG file:
 pygmentize -f png -O "line_numbers=False" -o tests/example.png tests/example.promql
 ```
 ![promql](tests/example.png)
+
+# Testing
+
+```console
+pip install -r requirements.txt
+pytest tests/ -v
+```
