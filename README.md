@@ -22,6 +22,7 @@ python setup.py install
 
 # Usage
 
+```console
+pygmentize -f png -O "line_numbers=False" -o tests/example.png tests/example.promql
 ```
-pygmentize -f png -O "full,style=monokai,line_numbers=False" -o /tmp/example.png tests/example.promql
-```
+![promql](tests/example.png)
