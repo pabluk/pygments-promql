@@ -76,10 +76,7 @@ class PromQLLexer(RegexLexer):
             (r"(\+|\-|\*|\/|\%|\^)", Operator),
             (r"==|!=|>=|<=|<|>", Operator),
             (r"and|or|unless", Operator.Word),
-            (
-                r"(by|without|offset|on|ignoring|group_left|group_right|bool)\b",
-                Keyword,
-            ),
+            (r"(by|without|offset|on|ignoring|group_left|group_right|bool)\b", Keyword,),
             (r"[_a-zA-Z][_a-zA-Z0-9]+", Name.Variable),
         ],
         "labels": [
