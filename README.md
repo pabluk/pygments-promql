@@ -2,30 +2,27 @@
 
 ![Python package](https://github.com/pabluk/pygments-promql/workflows/Python%20package/badge.svg)
 
-A PromQL lexer for [Pygments](https://pygments.org/).
+A PromQL lexer for Pygments.
 
+This Python package provides a [Pygments](https://pygments.org/) lexer for the [Prometheus Query Language](https://prometheus.io/docs/prometheus/latest/querying/basics/). It allows Pygments and other tools ([Sphinx](https://sphinx-doc.org/), [Chroma](https://github.com/alecthomas/chroma), etc) to highlight PromQL queries.
+
+![PromQL syntax highlighted](https://raw.githubusercontent.com/pabluk/pygments-promql/master/tests/example.png)
 
 # Installation
 
 ## Using pip
 
-Run:
+To get the latest version from pypi.org:
 
 ```console
 pip install pygments-promql
 ```
 
-## From source code
-
-or after cloning this repo:
-
-```console
-python setup.py install
-```
-
 # Usage
 
 ## Command-line
+
+*The following examples are using queries from [tests/example.promql](tests/example.promql)*
 
 Showing colorized output in a terminal:
 
@@ -38,7 +35,6 @@ Or to generate a PNG file:
 ```console
 pygmentize -f png -O "line_numbers=False,style=monokai" -o example.png tests/example.promql
 ```
-![PromQL syntax highlighted](https://raw.githubusercontent.com/pabluk/pygments-promql/master/tests/example.png)
 
 ## Python code
 
@@ -75,9 +71,11 @@ Use `HtmlFormatter(noclasses=True)` to include CSS inline styles on every `<span
 
 # Testing
 
-If you wan to test, play or contribute to this repo:
+If you want to test, play or contribute to this repo:
 
 ```console
+git clone https://github.com/pabluk/pygments-promql.git
+cd pygments-promql/
 pip install -r requirements.txt
 pip install -e .
 pytest -v
