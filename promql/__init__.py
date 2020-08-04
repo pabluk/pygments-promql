@@ -28,7 +28,8 @@ class PromQLLexer(RegexLexer):
     """
     For `PromQL <https://prometheus.io/docs/prometheus/latest/querying/basics/>`_ queries.
 
-    See https://github.com/prometheus/prometheus/tree/master/promql/parser for details about the grammar.
+    For details about the grammar see:
+    https://github.com/prometheus/prometheus/tree/master/promql/parser
     """
 
     name = "PromQL"
