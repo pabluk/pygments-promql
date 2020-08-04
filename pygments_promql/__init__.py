@@ -158,6 +158,8 @@ class PromQLLexer(RegexLexer):
         ],
         "labels": [
             (r"}", Punctuation, "#pop"),
+            (r"\n", Whitespace),
+            (r"\s+", Whitespace),
             (r",", Punctuation),
             (
                 r'([_a-zA-Z][_a-zA-Z0-9]*?)(\s*?)(=|!=|=~|~!)(\s*?)(".*?")',

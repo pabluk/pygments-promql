@@ -59,6 +59,27 @@ def test_metric_multiple_labels(lexer):
     assert list(lexer.get_tokens(fragment)) == tokens
 
 
+def test_metric_multiple_labels_with_spaces(lexer):
+    fragment = u'go_gc_duration_seconds{ instance="localhost:9090",  job="alertmanager" }'
+    tokens = [
+        (Token.Name.Variable, "go_gc_duration_seconds"),
+        (Token.Punctuation, "{"),
+        (Token.Text.Whitespace, " "),
+        (Token.Name.Label, "instance"),
+        (Token.Operator, "="),
+        (Token.Literal.String, '"localhost:9090"'),
+        (Token.Punctuation, ","),
+        (Token.Text.Whitespace, "  "),
+        (Token.Name.Label, "job"),
+        (Token.Operator, "="),
+        (Token.Literal.String, '"alertmanager"'),
+        (Token.Text.Whitespace, " "),
+        (Token.Punctuation, "}"),
+        (Token.Text.Whitespace, "\n"),
+    ]
+    assert list(lexer.get_tokens(fragment)) == tokens
+
+
 def test_expression_and_comment(lexer):
     fragment = u'go_gc_duration_seconds{instance="localhost:9090"} # single comment\n'
     tokens = [
