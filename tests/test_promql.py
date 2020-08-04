@@ -42,7 +42,9 @@ def test_metric_one_label(lexer):
 
 
 def test_metric_multiple_labels(lexer):
-    fragment = u'go_gc_duration_seconds{instance="localhost:9090",job="alertmanager"}'
+    fragment = (
+        u'go_gc_duration_seconds{instance="localhost:9090",job="alertmanager"}'
+    )
     tokens = [
         (Token.Name.Variable, "go_gc_duration_seconds"),
         (Token.Punctuation, "{"),
@@ -60,7 +62,9 @@ def test_metric_multiple_labels(lexer):
 
 
 def test_expression_and_comment(lexer):
-    fragment = u'go_gc_duration_seconds{instance="localhost:9090"} # single comment\n'
+    fragment = (
+        u'go_gc_duration_seconds{instance="localhost:9090"} # single comment\n'
+    )
     tokens = [
         (Token.Name.Variable, "go_gc_duration_seconds"),
         (Token.Punctuation, "{"),
