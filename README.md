@@ -22,18 +22,27 @@ pip install pygments-promql
 
 ## Command-line
 
-*The following examples are using queries from [tests/example.promql](tests/example.promql)*
+In a terminal you can echo and pipe a query directly from stdin:
+
+```console
+echo 'prometheus_http_requests_total{code="200"}' | pygmentize -l promql
+```
+
+Or use a file, for example, create the `example.promql` file with queries from
+[tests/example.promql](https://github.com/pabluk/pygments-promql/blob/master/tests/example.promql).
+In this case the option `-l promql` is not needed because the lexer will be
+detected based on the file extension.
 
 Showing colorized output in a terminal:
 
 ```console
-pygmentize tests/example.promql
+pygmentize example.promql
 ```
 
-Or to generate a PNG file:
+To generate a PNG file:
 
 ```console
-pygmentize -f png -O "line_numbers=False,style=monokai" -o example.png tests/example.promql
+pygmentize -f png -O "line_numbers=False,style=monokai" -o example.png example.promql
 ```
 
 ## Python code
