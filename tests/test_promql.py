@@ -115,3 +115,25 @@ def test_function_delta(lexer):
         (Token.Text.Whitespace, "\n"),
     ]
     assert list(lexer.get_tokens(fragment)) == tokens
+
+
+def test_function_sum_with_args(lexer):
+    fragment = u"sum by (app, proc) (instance_memory_usage_bytes)\n"
+    tokens = [
+        (Token.Keyword, "sum"),
+        (Token.Text.Whitespace, " "),
+        (Token.Keyword, "by"),
+        (Token.Text.Whitespace, " "),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "app"),
+        (Token.Punctuation, ","),
+        (Token.Text.Whitespace, " "),
+        (Token.Name.Variable, "proc"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, " "),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "instance_memory_usage_bytes"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, "\n"),
+    ]
+    assert list(lexer.get_tokens(fragment)) == tokens
