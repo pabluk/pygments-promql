@@ -1,6 +1,8 @@
 # pygments-promql
 
-![Python package](https://github.com/pabluk/pygments-promql/workflows/Python%20package/badge.svg)
+[![Python package](https://github.com/pabluk/pygments-promql/workflows/Python%20package/badge.svg)](https://github.com/pabluk/pygments-promql/actions)
+[![PyPI](https://img.shields.io/pypi/v/pygments-promql)](https://pypi.org/project/pygments-promql/)
+[![PyPI - License](https://img.shields.io/pypi/l/pygments-promql)](https://raw.githubusercontent.com/pabluk/pygments-promql/master/LICENSE)
 
 A PromQL lexer for Pygments.
 
