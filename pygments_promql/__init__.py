@@ -154,7 +154,7 @@ class PromQLLexer(RegexLexer):
             # Metrics
             (r"[_a-zA-Z][_a-zA-Z0-9]+", Name.Variable),
             # Params
-            (r'["\'].*?["\']', String),
+            (r'(["\'])(.*?)(["\'])', bygroups(Punctuation, String, Punctuation)),
             # Other states
             (r"\(", Operator, "function"),
             (r"\)", Operator),
@@ -167,14 +167,19 @@ class PromQLLexer(RegexLexer):
             (r"\s+", Whitespace),
             (r",", Punctuation),
             (
-                r'([_a-zA-Z][_a-zA-Z0-9]*?)(\s*?)(=|!=|=~|~!)(\s*?)(".*?")',
-                bygroups(Name.Label, Whitespace, Operator, Whitespace, String),
+                r'([_a-zA-Z][_a-zA-Z0-9]*?)(\s*?)(=|!=|=~|~!)(\s*?)(")(.*?)(")',
+                bygroups(
+                    Name.Label,
+                    Whitespace,
+                    Operator,
+                    Whitespace,
+                    Punctuation,
+                    String,
+                    Punctuation,
+                ),
             ),
         ],
-        "range": [
-            (r"\]", Punctuation, "#pop"),
-            (r"[1-9][0-9]*[s|m|h|d|w|y]", String),
-        ],
+        "range": [(r"\]", Punctuation, "#pop"), (r"[1-9][0-9]*[s|m|h|d|w|y]", String)],
         "function": [
             (r"\)", Operator, "#pop"),
             (r"\(", Operator, "#push"),
