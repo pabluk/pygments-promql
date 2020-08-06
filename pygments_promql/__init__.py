@@ -141,7 +141,7 @@ class PromQLLexer(RegexLexer):
             aggregator_keywords,
             function_keywords,
             # Offsets
-            (r"([1-9][0-9]*?)(s|m|h|d|w|y)", bygroups(String, String)),
+            (r"[1-9][0-9]*[s|m|h|d|w|y]", String),
             # Numbers
             (r"-?[0-9]+\.[0-9]+", Number.Float),
             (r"-?[0-9]+", Number.Integer),
@@ -173,7 +173,7 @@ class PromQLLexer(RegexLexer):
         ],
         "range": [
             (r"\]", Punctuation, "#pop"),
-            (r"([1-9][0-9]*?)(s|m|h|d|w|y)", bygroups(String, String)),
+            (r"[1-9][0-9]*[s|m|h|d|w|y]", String),
         ],
         "function": [
             (r"\)", Operator, "#pop"),
