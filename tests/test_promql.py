@@ -137,3 +137,72 @@ def test_function_sum_with_args(lexer):
         (Token.Text.Whitespace, "\n"),
     ]
     assert list(lexer.get_tokens(fragment)) == tokens
+
+
+def test_function_multi_line(lexer):
+    fragment = u"""label_replace(
+    sum by (instance) (
+        irate(node_disk_read_bytes_total[2m])
+    ) / 1024 / 1024,
+    "device",
+    'disk',
+    "instance",
+    ".*"
+)
+"""
+    tokens = [
+        (Token.Keyword.Reserved, "label_replace"),
+        (Token.Operator, "("),
+        (Token.Text.Whitespace, "\n"),
+        (Token.Text.Whitespace, "    "),
+        (Token.Keyword, "sum"),
+        (Token.Text.Whitespace, " "),
+        (Token.Keyword, "by"),
+        (Token.Text.Whitespace, " "),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "instance"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, " "),
+        (Token.Operator, "("),
+        (Token.Text.Whitespace, "\n"),
+        (Token.Text.Whitespace, "        "),
+        (Token.Keyword.Reserved, "irate"),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "node_disk_read_bytes_total"),
+        (Token.Punctuation, "["),
+        (Token.Literal.String, "2"),
+        (Token.Literal.String, "m"),
+        (Token.Punctuation, "]"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, "\n"),
+        (Token.Text.Whitespace, "    "),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, " "),
+        (Token.Operator, "/"),
+        (Token.Text.Whitespace, " "),
+        (Token.Literal.Number.Integer, "1024"),
+        (Token.Text.Whitespace, " "),
+        (Token.Operator, "/"),
+        (Token.Text.Whitespace, " "),
+        (Token.Literal.Number.Integer, "1024"),
+        (Token.Punctuation, ","),
+        (Token.Text.Whitespace, "\n"),
+        (Token.Text.Whitespace, "    "),
+        (Token.Literal.String, '"device"'),
+        (Token.Punctuation, ","),
+        (Token.Text.Whitespace, "\n"),
+        (Token.Text.Whitespace, "    "),
+        (Token.Literal.String, "'disk'"),
+        (Token.Punctuation, ","),
+        (Token.Text.Whitespace, "\n"),
+        (Token.Text.Whitespace, "    "),
+        (Token.Literal.String, '"instance"'),
+        (Token.Punctuation, ","),
+        (Token.Text.Whitespace, "\n"),
+        (Token.Text.Whitespace, "    "),
+        (Token.Literal.String, '".*"'),
+        (Token.Text.Whitespace, "\n"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, "\n"),
+    ]
+    assert list(lexer.get_tokens(fragment)) == tokens
