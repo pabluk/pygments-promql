@@ -384,3 +384,22 @@ def test_complex_exp_single_quotes(lexer):
         (Token.Text.Whitespace, "\n"),
     ]
     assert list(lexer.get_tokens(fragment)) == tokens
+
+
+def test_matching_operator_no_regexmatch(lexer):
+    fragment = u"metric_test_app{status!~'(4|5)..'}[2m]"
+    tokens = [
+        (Token.Name.Variable, "metric_test_app"),
+        (Token.Punctuation, "{"),
+        (Token.Name.Label, "status"),
+        (Token.Operator, "!~"),
+        (Token.Punctuation, "'"),
+        (Token.Literal.String, "(4|5).."),
+        (Token.Punctuation, "'"),
+        (Token.Punctuation, "}"),
+        (Token.Punctuation, "["),
+        (Token.Literal.String, "2m"),
+        (Token.Punctuation, "]"),
+        (Token.Text.Whitespace, "\n"),
+    ]
+    assert list(lexer.get_tokens(fragment)) == tokens
