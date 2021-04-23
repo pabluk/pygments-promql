@@ -308,3 +308,98 @@ def test_function_multi_line2(lexer):
         (Token.Text.Whitespace, "\n"),
     ]
     assert list(lexer.get_tokens(fragment)) == tokens
+
+
+def test_complex_exp_double_quotes(lexer):
+    fragment = u'(sum(rate(metric_test_app{app="turtle",proc="web"}[2m])) by(node))\n'
+    tokens = [
+        (Token.Operator, "("),
+        (Token.Keyword, "sum"),
+        (Token.Operator, "("),
+        (Token.Keyword.Reserved, "rate"),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "metric_test_app"),
+        (Token.Punctuation, "{"),
+        (Token.Name.Label, "app"),
+        (Token.Operator, "="),
+        (Token.Punctuation, '"'),
+        (Token.Literal.String, "turtle"),
+        (Token.Punctuation, '"'),
+        (Token.Punctuation, ","),
+        (Token.Name.Label, "proc"),
+        (Token.Operator, "="),
+        (Token.Punctuation, '"'),
+        (Token.Literal.String, "web"),
+        (Token.Punctuation, '"'),
+        (Token.Punctuation, "}"),
+        (Token.Punctuation, "["),
+        (Token.Literal.String, "2m"),
+        (Token.Punctuation, "]"),
+        (Token.Operator, ")"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, " "),
+        (Token.Keyword, "by"),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "node"),
+        (Token.Operator, ")"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, "\n"),
+    ]
+    assert list(lexer.get_tokens(fragment)) == tokens
+
+
+def test_complex_exp_single_quotes(lexer):
+    fragment = u"(sum(rate(metric_test_app{app='turtle',proc='web'}[2m])) by(node))\n"
+    tokens = [
+        (Token.Operator, "("),
+        (Token.Keyword, "sum"),
+        (Token.Operator, "("),
+        (Token.Keyword.Reserved, "rate"),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "metric_test_app"),
+        (Token.Punctuation, "{"),
+        (Token.Name.Label, "app"),
+        (Token.Operator, "="),
+        (Token.Punctuation, "'"),
+        (Token.Literal.String, "turtle"),
+        (Token.Punctuation, "'"),
+        (Token.Punctuation, ","),
+        (Token.Name.Label, "proc"),
+        (Token.Operator, "="),
+        (Token.Punctuation, "'"),
+        (Token.Literal.String, "web"),
+        (Token.Punctuation, "'"),
+        (Token.Punctuation, "}"),
+        (Token.Punctuation, "["),
+        (Token.Literal.String, "2m"),
+        (Token.Punctuation, "]"),
+        (Token.Operator, ")"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, " "),
+        (Token.Keyword, "by"),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "node"),
+        (Token.Operator, ")"),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, "\n"),
+    ]
+    assert list(lexer.get_tokens(fragment)) == tokens
+
+
+def test_matching_operator_no_regexmatch(lexer):
+    fragment = u"metric_test_app{status!~'(4|5)..'}[2m]"
+    tokens = [
+        (Token.Name.Variable, "metric_test_app"),
+        (Token.Punctuation, "{"),
+        (Token.Name.Label, "status"),
+        (Token.Operator, "!~"),
+        (Token.Punctuation, "'"),
+        (Token.Literal.String, "(4|5).."),
+        (Token.Punctuation, "'"),
+        (Token.Punctuation, "}"),
+        (Token.Punctuation, "["),
+        (Token.Literal.String, "2m"),
+        (Token.Punctuation, "]"),
+        (Token.Text.Whitespace, "\n"),
+    ]
+    assert list(lexer.get_tokens(fragment)) == tokens
