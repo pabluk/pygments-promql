@@ -17,7 +17,11 @@ def test_unknown_tokens():
     ntext = []
     for token_type, value in lx.get_tokens(text):
         ntext.append(value)
-        assert token_type != Error, (
-            "lexer %s generated error token: %r at position %d: %s"
-            % (lx, value, len(u"".join(ntext)), u"".join(ntext),)
+        assert (
+            token_type != Error
+        ), "lexer %s generated error token: %r at position %d: %s" % (
+            lx,
+            value,
+            len(u"".join(ntext)),
+            u"".join(ntext),
         )

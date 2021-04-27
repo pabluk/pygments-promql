@@ -136,7 +136,11 @@ class PromQLLexer(RegexLexer):
             (r"\s+", Whitespace),
             (r"//.*?\n", Comment.Single),
             (r",", Punctuation),
-            (r"(by|without)(\s*?)(\()", bygroups(Keyword, Whitespace, Operator), "aggregator_modifier"),
+            (
+                r"(by|without)(\s*?)(\()",
+                bygroups(Keyword, Whitespace, Operator),
+                "aggregator_modifier",
+            ),
             # Keywords
             base_keywords,
             aggregator_keywords,

@@ -66,7 +66,9 @@ def test_metric_multiple_labels(lexer):
 
 
 def test_metric_multiple_labels_with_spaces(lexer):
-    fragment = u'go_gc_duration_seconds{ instance="localhost:9090",  job="alertmanager" }'
+    fragment = (
+        u'go_gc_duration_seconds{ instance="localhost:9090",  job="alertmanager" }'
+    )
     tokens = [
         (Token.Name.Variable, "go_gc_duration_seconds"),
         (Token.Punctuation, "{"),
@@ -404,6 +406,7 @@ def test_matching_operator_no_regexmatch(lexer):
     ]
     assert list(lexer.get_tokens(fragment)) == tokens
 
+
 def test_by_clause_label_list(lexer):
     fragment = u"sum(irate(metric_histogram{a=~'(1|2|3)',b=~'(1|2|3)',c=~'(1|2|3)',d=~'(1|2|3)'}[1m])) by(a,b,c)"
     tokens = [
@@ -460,17 +463,17 @@ def test_without_clause_label_list(lexer):
     fragment = u"sum without (instance,) (http_requests_total)"
     tokens = [
         (Token.Keyword, "sum"),
-	(Token.Text.Whitespace, ' '),
-	(Token.Keyword, 'without'),
-	(Token.Text.Whitespace, ' '),
-	(Token.Operator, '('),
-	(Token.Name.Label, 'instance'),
+        (Token.Text.Whitespace, " "),
+        (Token.Keyword, "without"),
+        (Token.Text.Whitespace, " "),
+        (Token.Operator, "("),
+        (Token.Name.Label, "instance"),
         (Token.Punctuation, ","),
-	(Token.Operator, ')'),
-	(Token.Text.Whitespace, ' '),
-	(Token.Operator, '('),
-	(Token.Name.Variable, 'http_requests_total'),
-	(Token.Operator, ')'),
+        (Token.Operator, ")"),
+        (Token.Text.Whitespace, " "),
+        (Token.Operator, "("),
+        (Token.Name.Variable, "http_requests_total"),
+        (Token.Operator, ")"),
         (Token.Text.Whitespace, "\n"),
     ]
     assert list(lexer.get_tokens(fragment)) == tokens
