@@ -21,7 +21,7 @@ setuptools.setup(
         "Topic :: Text Processing",
         "Topic :: Utilities",
     ],
-    python_requires=">=3.5",
+    python_requires=">=3.7",
     install_requires=["Pygments>=2"],
     entry_points={
         "pygments.lexers": ["PromQLLexer = pygments_promql:PromQLLexer"],
