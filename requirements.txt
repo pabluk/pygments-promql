@@ -1,4 +1,4 @@
 flake8==3.8.3
 Pillow==8.3.2
 Pygments==2.7.4
-pytest==6.0.1
+pytest==6.2.5
