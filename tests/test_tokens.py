@@ -18,6 +18,28 @@ def test_unknown_tokens():
     for token_type, value in lx.get_tokens(text):
         ntext.append(value)
         assert (
+                token_type != Error
+        ), "lexer %s generated error token: %r at position %d: %s" % (
+            lx,
+            value,
+            len(u"".join(ntext)),
+            u"".join(ntext),
+        )
+
+
+def test_local_promqllexer_unknown_tokens():
+    with open("tests/example_grafana_templated.promql") as f:
+        text = f.read()
+
+    import sys
+    sys.path.insert(1, './pygments-promql')
+    from pygments_promql import PromQLLexer
+    lx = PromQLLexer()
+
+    ntext = []
+    for token_type, value in lx.get_tokens(text):
+        ntext.append(value)
+        assert (
             token_type != Error
         ), "lexer %s generated error token: %r at position %d: %s" % (
             lx,
