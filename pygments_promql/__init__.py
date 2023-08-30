@@ -157,7 +157,8 @@ class PromQLLexer(RegexLexer):
             (r"==|!=|>=|<=|<|>", Operator),
             (r"and|or|unless", Operator.Word),
             # Metrics
-            (r"[_a-zA-Z][_a-zA-Z0-9]+", Name.Variable),
+            (r"[_a-zA-Z][_a-zA-Z0-9]+(\$\{?[_a-zA-Z0-9]*\})?[_a-zA-Z0-9]*", Name.Variable),
+            # (r"[_a-zA-Z][_a-zA-Z0-9]+", Name.Variable),
             # Params
             (r'(["\'])(.*?)(["\'])', bygroups(Punctuation, String, Punctuation)),
             # Other states
