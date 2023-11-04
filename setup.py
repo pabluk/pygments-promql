@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pygments-promql",
-    version="0.0.9",
+    version="0.1.1",
     author="Pablo Seminario",
     author_email="pablo@seminar.io",
     description="A PromQL lexer for Pygments",
