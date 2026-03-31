@@ -6,7 +6,6 @@
     :copyright: Copyright 2006-2020 by the Pygments team, see AUTHORS.
     :license: BSD, see LICENSE for details.
 """
-import sys
 import pytest
 
 from pygments.token import Token
@@ -477,7 +476,3 @@ def test_without_clause_label_list(lexer):
         (Token.Text.Whitespace, "\n"),
     ]
     assert list(lexer.get_tokens(fragment)) == tokens
-
-
-if __name__ == "__main__":
-    sys.exit(pytest.main())
