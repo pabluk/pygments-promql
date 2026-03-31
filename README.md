@@ -109,7 +109,6 @@ If you want to test, play or contribute to this repo:
 ```console
 git clone https://github.com/pabluk/pygments-promql.git
 cd pygments-promql/
-pip install -r requirements.txt
-pip install -e .
-pytest -v
+uv sync --locked --all-extras --dev
+uv run pytest -v
 ```
