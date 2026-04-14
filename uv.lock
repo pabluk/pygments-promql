@@ -215,14 +215,14 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "pillow", specifier = ">=12.1.1" },
-    { name = "pygments", specifier = ">=2.20.0" },
+    { name = "pillow", specifier = ">=12.2" },
+    { name = "pygments", specifier = ">=2.20" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "flake8", specifier = ">=7.3.0" },
-    { name = "pytest", specifier = ">=7.4.3" },
+    { name = "flake8", specifier = ">=7.3" },
+    { name = "pytest", specifier = ">=9.0" },
 ]
 
 [[package]]

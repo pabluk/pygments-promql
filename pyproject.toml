@@ -17,8 +17,8 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "pillow>=12.1.1",
-    "pygments>=2.20.0",
+    "pillow>=12.2",
+    "pygments>=2.20",
 ]
 
 [project.urls]
@@ -31,8 +31,8 @@ PromQLLexer = "pygments_promql:PromQLLexer"
 
 [dependency-groups]
 dev = [
-    "flake8>=7.3.0",
-    "pytest>=7.4.3",
+    "flake8>=7.3",
+    "pytest>=9.0",
 ]
 
 [build-system]
