@@ -1,6 +1,6 @@
 [project]
 name = "pygments-promql"
-version = "0.2.5"
+version = "0.2.6"
 description = "A PromQL lexer for Pygments"
 authors = [
   {name = "Pablo Seminario", email = "pablo@seminar.io"}
