@@ -180,7 +180,7 @@ wheels = [
 
 [[package]]
 name = "pygments-promql"
-version = "0.2.6"
+version = "0.2.7"
 source = { editable = "." }
 dependencies = [
     { name = "pillow" },
