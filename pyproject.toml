@@ -15,7 +15,7 @@ classifiers = [
   "Topic :: Text Processing",
   "Topic :: Utilities",
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "pillow>=12.2",
     "pygments>=2.20",
